@@ -40,9 +40,10 @@ export class Hospital {
   }
 
   // call this once to seed app state with items
-  static seedHospitalData() {
-    let map = new Map();
-    data.forEach(location => map.set(location.id, Hospital.fromAPIResponse(location)));
-    return map;
-  }
+}
+
+export const seedHospitalData: () => Map<string, Hospital> = () => {
+  let map = new Map<string, Hospital>();
+  data.forEach(location => map.set(location.id, Hospital.fromAPIResponse(location)));
+  return map;
 }

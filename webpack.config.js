@@ -83,7 +83,7 @@ module.exports = {
                             },
                         },
                     {
-                        // becombine other css files into one
+                        // combine other css files into one
                         // https://www.npmjs.com/package/css-loader
                         loader: 'css-loader',
                         options: {
@@ -101,7 +101,7 @@ module.exports = {
                             postcssOptions: {
                                 plugins: [
                                     require("tailwindcss"),
-                                    // add addtional postcss plugins here
+                                    // add additional postcss plugins here
                                     // easily find plugins at https://www.postcss.parts/
                                 ]
                             }
@@ -219,6 +219,7 @@ module.exports = {
 
                 minimizerOptions: {
                     preset: ["default", { discardComments: { removeAll: true } }],
+                    // needed? -JR
                     // plugins: ['autoprefixer'],
                 },
             }),
@@ -232,6 +233,7 @@ module.exports = {
         compress: true,
         allowedHosts: 'all',
         hot: true,
+        // needed for react-router-dom
         historyApiFallback: true,
     },
 
