@@ -1,11 +1,11 @@
 import { merge } from "lodash";
-
 import { Hospital } from "@src/api/hospital/model";
 import {
   ADD_HOSPITAL,
   DELETE_HOSPITAL,
   EDIT_HOSPITAL,
 } from "@src/reducers/hospitals/actions";
+import { randomId } from "@src/utils";
 import type { AnyAction } from "@src/store/types";
 
 type HospitalReducer = Map<number, Hospital>;
@@ -17,8 +17,12 @@ export function hospitalReducer(
   switch (action.type) {
     case ADD_HOSPITAL: {
       let map = new Map(state);
-      map.set(action.payload.id, Hospital.fromAPIResponse(action.payload));
+      let newId = action.payload.id;
+      while (map.has(newId)) {
+        newId = randomId();
+      }
       console.log(action.payload);
+      map.set(newId, Hospital.fromAPIResponse(action.payload));
       return map;
     }
     case DELETE_HOSPITAL: {
