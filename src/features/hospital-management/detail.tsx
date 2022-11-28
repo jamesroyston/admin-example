@@ -15,8 +15,10 @@ export const Detail = () => {
   }
 
   return (
-    <div>
-      {hospital.name} --- {hospital.formattedAddress}
+    <div className="pt-3">
+      <div>Name: {hospital.name}</div>
+      <div>Address: {hospital.formattedAddress}</div>
+      <div>Updated At: {hospital.formattedUpdatedAt}</div>
     </div>
   );
 };
