@@ -2,6 +2,8 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSortedState } from "@src/selectors/hospitals";
 
+import { ListItem } from "@src/components/list-item";
+
 import { Hospital } from "@src/api/hospital/model";
 
 import {
@@ -11,9 +13,8 @@ import {
 } from "@src/reducers/hospitals/actions";
 
 import { DETAILS_PATH } from "@src/routes";
-
 import { HOSPITALS } from "@src/reducers/constants";
-import { useDispatch, useSelector } from "@src/store";
+import { useDispatch } from "@src/store";
 
 export function All() {
   const history = useHistory();
@@ -28,55 +29,57 @@ export function All() {
 
   const goToDetails = (id: number) => history.push(`${DETAILS_PATH}/${id}`);
 
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
-
   return (
     <div className="flex-col">
       {hospitals.map((h, i) => (
-        <div className="pb-3" key={i.toString() + h.name}>
-          <span>
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                goToDetails(h.id);
-              }}
-            >
-              {h.name} - {h.formattedAddress} - {h.formattedUpdatedAt}
-            </div>
+        // @ts-ignore
+        <ListItem>
+          <span className="cursor-pointer" onClick={() => goToDetails(h.id)}>
+            {h.name}
           </span>
-          <span className="ml-3">
-            <button onClick={() => dispatch(deleteHospital(h.id!))}>
-              delete
-            </button>
-            <button
-              onClick={() =>
-                dispatch(
-                  editHospital({
-                    id: h.id!,
-                    name: "NEW NAME",
-                    street: "NIGHT CITY STREET BOY",
-                  })
-                )
-              }
-            >
-              edit
-            </button>
-            <button
-              onClick={() =>
-                dispatch(
-                  addHospital({
-                    id: 123123,
-                    name: "asdfasdf",
-                  })
-                )
-              }
-            >
-              add
-            </button>
-          </span>
-        </div>
+        </ListItem>
+        //   <div className="pb-3" key={i.toString() + h.name}>
+        //     <span>
+        //       <div
+        //         onClick={(e) => {
+        //           e.stopPropagation();
+        //           goToDetails(h.id);
+        //         }}
+        //       >
+        //         {h.name} - {h.formattedAddress} - {h.formattedUpdatedAt}
+        //       </div>
+        //     </span>
+        //     <span className="ml-3">
+        //       <button onClick={() => dispatch(deleteHospital(h.id!))}>
+        //         delete
+        //       </button>
+        //       <button
+        //         onClick={() =>
+        //           dispatch(
+        //             editHospital({
+        //               id: h.id!,
+        //               name: "NEW NAME",
+        //               street: "NIGHT CITY STREET BOY",
+        //             })
+        //           )
+        //         }
+        //       >
+        //         edit
+        //       </button>
+        //       <button
+        //         onClick={() =>
+        //           dispatch(
+        //             addHospital({
+        //               id: 123123,
+        //               name: "asdfasdf",
+        //             })
+        //           )
+        //         }
+        //       >
+        //         add
+        //       </button>
+        //     </span>
+        //   </div>
       ))}
     </div>
   );
