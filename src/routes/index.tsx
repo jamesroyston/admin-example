@@ -1,18 +1,17 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import { All, Detail } from '@src/features/hospital-management'
-import { StarterPage } from '@src/starter-page';
+import { All, Detail } from "@src/features/hospital-management";
 
-const ALL_PATH = '/hospitals/all';
-const DETAILS_PATH = '/hospitals/detail/:id';
-const ERROR_PATH = '/404';
-const ROOT_PATH = '/';
+export const ALL_PATH = "/hospitals/all";
+export const DETAILS_PATH = "/hospitals/detail";
+export const ERROR_PATH = "/404";
+const ROOT_PATH = "/";
 
 export const Routes = () => (
   <Switch>
-    <Route path={DETAILS_PATH} component={Detail}/>
-    <Route path={ALL_PATH} component={All}/>
+    <Route path={`${DETAILS_PATH}/:id`} component={Detail} />
+    <Route path={ALL_PATH} component={All} />
     <Route path={ERROR_PATH}>
       <div>Whoops, something went wrong.</div>
     </Route>
@@ -23,4 +22,4 @@ export const Routes = () => (
       <Redirect to={ERROR_PATH} />
     </Route>
   </Switch>
-)
+);

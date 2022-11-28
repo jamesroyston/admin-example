@@ -21,6 +21,7 @@ export class Hospital {
   readonly city?: string;
   readonly state?: string;
   readonly zipCode?: number;
+  readonly updatedAt: Date;
   // readonly thumbnailUrl?: string;
 
   constructor(props: HospitalProps) {
@@ -30,6 +31,7 @@ export class Hospital {
     this.city = props?.city || "Night City";
     this.state = props?.state || "CA";
     this.zipCode = props?.zipCode || 37707;
+    this.updatedAt = new Date();
   }
 
   static fromAPIResponse(props: any) {
@@ -40,13 +42,17 @@ export class Hospital {
     const { street, city, state, zipCode } = this;
     return `${street}, ${city} ${state} ${zipCode}`;
   }
+
+  get formattedUpdatedAt() {
+    return this.updatedAt.toLocaleString();
+  }
 }
 
-export const seedHospitalData: () => Map<string, Hospital> = () => {
-  let map = new Map<string, Hospital>();
+export const seedHospitalData: () => Map<number, Hospital> = () => {
+  let map = new Map<number, Hospital>();
   data.forEach((location) => {
     map.set(
-      location.id,
+      parseInt(location.id),
       Hospital.fromAPIResponse(convertSnakeCaseToCamelCase(location))
     );
   });

@@ -8,7 +8,7 @@ import {
 } from "@src/reducers/hospitals/actions";
 import type { AnyAction } from "@src/store/types";
 
-type HospitalReducer = Map<string, Hospital>;
+type HospitalReducer = Map<number, Hospital>;
 
 export function hospitalReducer(
   state: HospitalReducer = new Map(),
