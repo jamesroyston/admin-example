@@ -32,7 +32,7 @@ export const Tabs = () => {
     <div className="border-t-2">
       {tabs.map((tab, index) => (
         <div
-          key={tab.title}
+          key={`${tab.title}_${index}`}
           className={`${containerClassNames} ${cx(
             selected !== index ? "text-neutral-600" : "text-emerald-500"
           )}`}

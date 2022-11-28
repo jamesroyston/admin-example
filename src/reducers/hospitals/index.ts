@@ -18,6 +18,7 @@ export function hospitalReducer(
     case ADD_HOSPITAL: {
       let map = new Map(state);
       map.set(action.payload.id, Hospital.fromAPIResponse(action.payload));
+      console.log(action.payload);
       return map;
     }
     case DELETE_HOSPITAL: {

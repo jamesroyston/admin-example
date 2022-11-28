@@ -18,13 +18,6 @@ import { useDispatch } from "@src/store";
 
 export function All() {
   const history = useHistory();
-  // @ts-ignore symbol.iterator
-  // const [state] = useSelector(HOSPITALS);
-  // @ts-ignore symbol.iterator
-  const [dispatch] = useDispatch(HOSPITALS);
-
-  // const getHospitals = (): Hospital[] => Array.from(state.values());
-
   const hospitals = useSortedState(HOSPITALS) as Hospital[];
 
   const goToDetails = (id: number) => history.push(`${DETAILS_PATH}/${id}`);
@@ -33,7 +26,7 @@ export function All() {
     <div className="flex-col">
       {hospitals.map((h, i) => (
         // @ts-ignore
-        <ListItem>
+        <ListItem key={`${h.name}_${i}`}>
           <span className="cursor-pointer" onClick={() => goToDetails(h.id)}>
             {h.name}
           </span>

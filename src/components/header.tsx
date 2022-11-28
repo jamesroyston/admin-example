@@ -16,7 +16,7 @@ export const Header = () => {
   const location = useLocation();
   let title: string;
   let buttonText: string;
-  let handleClick: () => void;
+  let handleClick: () => void = () => {};
 
   switch (true) {
     case !!matchPath(location.pathname, {

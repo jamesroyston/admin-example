@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useMemo, useReducer } from "react";
 import "@src/tailwind.css";
 
 import { Header } from "@src/components/header";
@@ -29,10 +29,7 @@ export const App = () => {
   const store = {
     hospitals: [hospitalState],
   };
-  // TODO: need better name
-  const dispatch = {
-    hospitals: [hospitalDispatch],
-  };
+  const dispatch = useMemo(() => ({ hospitals: [hospitalDispatch] }), []);
 
   return (
     <DispatchContext.Provider value={dispatch}>
