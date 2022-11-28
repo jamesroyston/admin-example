@@ -31,48 +31,6 @@ export function All() {
             {h.name}
           </span>
         </ListItem>
-        //   <div className="pb-3" key={i.toString() + h.name}>
-        //     <span>
-        //       <div
-        //         onClick={(e) => {
-        //           e.stopPropagation();
-        //           goToDetails(h.id);
-        //         }}
-        //       >
-        //         {h.name} - {h.formattedAddress} - {h.formattedUpdatedAt}
-        //       </div>
-        //     </span>
-        //     <span className="ml-3">
-        //       <button onClick={() => dispatch(deleteHospital(h.id!))}>
-        //         delete
-        //       </button>
-        //       <button
-        //         onClick={() =>
-        //           dispatch(
-        //             editHospital({
-        //               id: h.id!,
-        //               name: "NEW NAME",
-        //               street: "NIGHT CITY STREET BOY",
-        //             })
-        //           )
-        //         }
-        //       >
-        //         edit
-        //       </button>
-        //       <button
-        //         onClick={() =>
-        //           dispatch(
-        //             addHospital({
-        //               id: 123123,
-        //               name: "asdfasdf",
-        //             })
-        //           )
-        //         }
-        //       >
-        //         add
-        //       </button>
-        //     </span>
-        //   </div>
       ))}
     </div>
   );
